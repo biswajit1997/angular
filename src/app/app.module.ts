@@ -13,17 +13,18 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { HomeComponent } from './home/home.component';
+import {MatInputModule} from '@angular/material/input';
 import { ContactComponent } from './contact/contact.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import {MatTableModule} from '@angular/material/table';
+
+import {MatFormFieldModule} from '@angular/material/form-field';
+
+import { TodoComponent } from './todo/todo.component';
+import { FormsModule } from '@angular/forms';
 
 
-const appRoutes:Routes=[
-  {path:'', component: HomeComponent},
-  {path:'contact',component: ContactComponent},
-  {path:'aboutus',component: AboutUsComponent},
-  
- 
-]
+
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ const appRoutes:Routes=[
     HomeComponent,
     ContactComponent,
     AboutUsComponent,
+    TodoComponent
     
   ],
   imports: [
@@ -42,9 +44,12 @@ const appRoutes:Routes=[
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
+    FormsModule,
     MatIconModule,
     MatListModule,
-    RouterModule.forRoot(appRoutes)
+    MatInputModule,
+    MatFormFieldModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
