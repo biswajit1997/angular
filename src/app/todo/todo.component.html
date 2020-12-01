@@ -60,7 +60,7 @@
         <ng-container matColumnDef="Action">
             <th mat-header-cell *matHeaderCellDef style="align-items: center;"> Action </th>
             <td mat-cell *matCellDef="let element">    
-                 <button mat-raised-button color="primary" (click)="deleteTodo(element.id)">Delete</button>
+                 <button mat-raised-button color="primary" (click)="deleteTodo(element.id)">Delete</button>&nbsp;
                 
                <button mat-raised-button color="accent" (click)="EditTodo(false, '', '', element.id)">Edit</button>
             </td>

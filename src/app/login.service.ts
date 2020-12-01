@@ -12,5 +12,8 @@ export class LoginService {
     console.log(data);
     return this.fireService.collection('Register').add(data);
   }
+  // getData(){
+    
+  // }
 }
  
