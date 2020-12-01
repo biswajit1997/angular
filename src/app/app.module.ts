@@ -22,6 +22,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 
 import { TodoComponent } from './todo/todo.component';
 import { FormsModule } from '@angular/forms';
+import {LoginService} from './login.service';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
+import { environment } from '../environments/environment';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
+
 
 
 
@@ -49,9 +54,13 @@ import { FormsModule } from '@angular/forms';
     MatListModule,
     MatInputModule,
     MatFormFieldModule,
-    MatTableModule
+    MatTableModule,
+    AngularFireDatabaseModule,
+   
+    AngularFirestoreModule
+
   ],
-  providers: [],
+  providers: [LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

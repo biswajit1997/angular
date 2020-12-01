@@ -1,10 +1,21 @@
-<style>
-    .main{
-        text-align: center;
-        margin-top: 30px;
-        font-size: 3em;
-    }
-</style>
 <div class="main">
-    <p>home works!</p>
+  <div>
+    <h3>Register</h3>
+  </div>
+  <form #myFrom="ngForm" class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="inf@gmail.com" name="email" ngModel>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Mobile</mat-label>
+      <input matInput placeholder="Enter mobile number" name="mobile" ngModel>
+    </mat-form-field>
+  
+    <mat-form-field class="example-full-width">
+      <mat-label>Password</mat-label>
+      <input matInput placeholder="Enter Password" type="password" name="password" ngModel>
+    </mat-form-field>
+    <button mat-flat-button color="primary" type="submit" [disabled]  (click)="Login(myFrom.value)">sign up</button>
+  </form>
 </div>
