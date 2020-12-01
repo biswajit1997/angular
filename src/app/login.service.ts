@@ -6,10 +6,11 @@ import {AngularFirestore} from '@angular/fire/firestore';
 })
 export class LoginService {
 
-  constructor(public fireService:AngularFirestore) { }
+  constructor(public fireService:AngularFirestore ) { }
 
   create_NewRegister(data:any){
     console.log(data);
     return this.fireService.collection('Register').add(data);
   }
 }
+ 

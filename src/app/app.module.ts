@@ -23,10 +23,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { TodoComponent } from './todo/todo.component';
 import { FormsModule } from '@angular/forms';
 import {LoginService} from './login.service';
-import {AngularFireDatabaseModule} from '@angular/fire/database';
+import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
-import {AngularFirestoreModule} from '@angular/fire/firestore';
-
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 
 
@@ -55,9 +56,10 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
     MatInputModule,
     MatFormFieldModule,
     MatTableModule,
-    AngularFireDatabaseModule,
-   
-    AngularFirestoreModule
+    AngularFireModule.initializeApp(environment.firebase, 'mytestapp'),
+    AngularFirestoreModule, // Only required for database features
+    AngularFireAuthModule, // Only required for auth features,
+    AngularFireStorageModule // Only required for storage features
 
   ],
   providers: [LoginService],
