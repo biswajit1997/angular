@@ -1,15 +1,20 @@
 import { Injectable } from '@angular/core'; 
 import {AngularFirestore} from '@angular/fire/firestore';
+import { clearScreenDown } from 'readline';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  constructor() { }
+  constructor(public afs:AngularFirestore ) { }
 
-  // create_NewRegister(data:any){
-  //   console.log(data);
-  //   return this.fireService.collection('Register').add(data);
-  // }
+  create_NewRegister(data:any){
+    
+    return this.afs.collection('Register').add(data);
+  }
+  allData(){
+     return this.afs.collection('Register').snapshotChanges();
+  }
 }
+ 

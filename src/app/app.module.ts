@@ -13,23 +13,21 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { HomeComponent } from './home/home.component';
-import {MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
 import { ContactComponent } from './contact/contact.component';
 import { AboutUsComponent } from './about-us/about-us.component';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { TodoComponent } from './todo/todo.component';
 import { FormsModule } from '@angular/forms';
-import {LoginService} from './login.service';
-import {AngularFireDatabaseModule} from '@angular/fire/database';
+import { LoginService } from './login.service';
+import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
-import {AngularFirestoreModule} from '@angular/fire/firestore';
-
-
-
-
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
@@ -38,8 +36,7 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
     HomeComponent,
     ContactComponent,
     AboutUsComponent,
-    TodoComponent
-    
+    TodoComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,12 +52,12 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
     MatInputModule,
     MatFormFieldModule,
     MatTableModule,
-    AngularFireDatabaseModule,
-   
-    AngularFirestoreModule
-
+    AngularFireModule.initializeApp(environment.firebase, 'mytestapp'),
+    AngularFirestoreModule, // Only required for database features
+    AngularFireAuthModule, // Only required for auth features,
+    AngularFireStorageModule, // Only required for storage features
   ],
   providers: [LoginService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

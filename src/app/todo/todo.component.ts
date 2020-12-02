@@ -16,7 +16,7 @@ export class TodoComponent implements OnInit {
   title = "";
   desc = "";
 
-  
+  table = false;
   c = 100;
 
   displayedColumns: string[] = ['Id', 'Title', 'Desc', 'Action'];
@@ -47,7 +47,7 @@ export class TodoComponent implements OnInit {
 
     console.log(this.todos)
 
-   
+   this.table = true;
   }
 
 
@@ -90,6 +90,7 @@ export class TodoComponent implements OnInit {
     
 
   }
+
   updateTodo(add:boolean,title:string,desc:string){
     console.log(title)
     let index:number;
