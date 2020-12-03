@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../login.service';
 import { MatTableDataSource } from '@angular/material/table';
 
+
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -27,17 +29,23 @@ export class HomeComponent implements OnInit {
   dataSource = new MatTableDataSource(this.dataItem);
 
   constructor(public loginservice: LoginService) {}
-  ngOnInit(): void {
+  ngOnInit() {
+
     this.loginservice.allData().subscribe((data) => {
-      this.dataItem = data.map((e) => {
+      this.dataItem = data.map((e:any) => {
         return {
           id: e.payload.doc.id,
-          name: e.payload.doc.data()['name'],
-          email: e.payload.doc.data()['email'],
-          mobile: e.payload.doc.data()['mobile'],
+          name: e.payload.doc.data().name,
+          email: e.payload.doc.data().email,
+          mobile: e.payload.doc.data().mobile,
         };
       });
+
+      console.log("wsd", this.dataItem)
+      this.dataSource = new MatTableDataSource(this.dataItem);
     });
+
+    
   }
   Login(formObj: any) {
     let data = formObj;
@@ -50,23 +58,18 @@ export class HomeComponent implements OnInit {
         console.log(error);
       });
   }
-  getAllData() {
-    this.loginservice.allData().subscribe((el) => {
-      let item;
-      for (let property in el) {
-        item = el[property].payload.doc.data();
-        this.dataItem.push(item);
-      }
-      console.log(this.dataItem);
-    });
-  }
-
-  // LogIn(login:any){
-  //   let data =login;
-  //   this.loginservice.collection(data).then(res => {
-  //     console.log(data)
-  //   }).catch(error =>{
-  //     console.log(error)
-  //   })
+  // getAllData() {
+  //   this.loginservice.allData().subscribe((el) => {
+  //     let item;
+  //     for (let property in el) {
+  //       item = el[property].payload.doc.data();
+  //       this.dataItem.push(item);
+  //     }
+  //     console.log(this.dataItem);
+  //   });
   // }
+
+  LogIn(login:any){
+  
+  }
 }
