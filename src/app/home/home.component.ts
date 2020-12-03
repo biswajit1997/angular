@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../login.service';
 import { MatTableDataSource } from '@angular/material/table';
 
-
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -11,7 +9,9 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class HomeComponent implements OnInit {
   dataItem: Array<any> = [];
-
+  oneItem: any;
+  profile = false;
+  login = true;
   all: any = [
     {
       name: 'Biswajit',
@@ -30,9 +30,8 @@ export class HomeComponent implements OnInit {
 
   constructor(public loginservice: LoginService) {}
   ngOnInit() {
-
     this.loginservice.allData().subscribe((data) => {
-      this.dataItem = data.map((e:any) => {
+      this.dataItem = data.map((e: any) => {
         return {
           id: e.payload.doc.id,
           name: e.payload.doc.data().name,
@@ -40,14 +39,10 @@ export class HomeComponent implements OnInit {
           mobile: e.payload.doc.data().mobile,
         };
       });
-
-      console.log("wsd", this.dataItem)
       this.dataSource = new MatTableDataSource(this.dataItem);
     });
-
-    
   }
-  Login(formObj: any) {
+  Register(formObj: any) {
     let data = formObj;
     this.loginservice
       .create_NewRegister(data)
@@ -69,7 +64,38 @@ export class HomeComponent implements OnInit {
   //   });
   // }
 
-  LogIn(login:any){
-  
+  LogIn(login: any) {
+    this.loginservice.userLogin(login).subscribe((res) => {
+      this.login = false;
+      this.oneItem = res[0].payload.doc.data();
+      this.profile = true;
+
+      console.log(this.oneItem);
+    });
+    console.log(this.oneItem);
+  }
+
+  delete(id: number) {
+    console.log(id);
+    this.loginservice
+      .deleteData(id)
+      .then((res) => {
+        console.log('deleted');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+  edit(id: number) {
+    let oneData = this.loginservice.editData(id);
+    this.oneItem.push(
+      oneData.subscribe((res) => {
+        console.log(res);
+      })
+    );
+  }
+  logout(){
+    this.profile = false;
+    this.login =true;
   }
 }

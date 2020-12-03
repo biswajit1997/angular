@@ -11,8 +11,8 @@
         <a mat-list-item routerLink="aboutus">About Us</a>
       </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar color="primary">
+  <mat-sidenav-content >
+    <!-- <mat-toolbar color="primary">
       <button
         type="button"
         aria-label="Toggle sidenav"
@@ -21,7 +21,23 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>test</span>
+    </mat-toolbar> -->
+    <mat-toolbar color="primary">
+      <button
+      type="button"
+      aria-label="Toggle sidenav"
+      mat-icon-button
+      (click)="drawer.toggle()"
+      *ngIf="isHandset$ | async">
+      <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    </button>
+      <span>My App</span>
+      <span class="example-spacer"></span>
+      <span ><a href="">Login</a></span> /
+       <span><a href="">Register</a></span>
+      <button *ngIf="acountIcon" mat-mini-fab color="#fff"  >
+        <mat-icon >account_circle</mat-icon>
+      </button>
     </mat-toolbar>
     <router-outlet></router-outlet>
 
