@@ -9,13 +9,26 @@ import { map, shareReplay } from 'rxjs/operators';
   styleUrls: ['./main-nav.component.css']
 })
 export class MainNavComponent {
-  acountIcon =false;
+  
+  acountIcon = false;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
       shareReplay()
     );
+    
+  ngOnInit(): void {
+   let  data  = localStorage.getItem('pro');
+   if (data === 'true') {
+     console.log(data)
+    this.acountIcon=true ;
+    }
+  }
+ 
 
+      
   constructor(private breakpointObserver: BreakpointObserver) {}
+
+  
   
 }

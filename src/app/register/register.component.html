@@ -1,0 +1,82 @@
+
+<div class="main">
+    <div>
+      <h3>Register</h3>
+    </div>
+    <form #myFrom="ngForm" class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Enter your name" name="name" ngModel>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="inf@gmail.com" name="email" ngModel>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Mobile</mat-label>
+        <input matInput placeholder="Enter mobile number" name="mobile" ngModel>
+      </mat-form-field>
+    
+      <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input matInput placeholder="Enter Password" type="password" name="password" ngModel>
+      </mat-form-field>
+      <button mat-flat-button color="primary" type="submit" (click)="Register(myFrom.value)">sign up</button>
+    </form>
+  </div>
+
+
+  
+<div   class="table_section">
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+    
+      <!-- Position Column -->
+      <ng-container matColumnDef="Name">
+        <th mat-header-cell *matHeaderCellDef>Name </th>
+      
+        <td mat-cell *matCellDef="let element">  {{element.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Email">
+        <th mat-header-cell *matHeaderCellDef>Email </th>
+        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+      </ng-container>
+    
+      <!-- Name Column -->
+      <ng-container matColumnDef="Mobile">
+        <th mat-header-cell *matHeaderCellDef> Mobile </th>
+
+
+        <td mat-cell *matCellDef="let element"> {{element.mobile}} </td>
+        
+      </ng-container>
+    
+  
+      <ng-container matColumnDef="Action">
+          <th mat-header-cell *matHeaderCellDef > Action </th>
+          <td mat-cell *matCellDef="let element">    
+              
+               <div>
+                  <button mat-mini-fab color="#000" (click)="delete(element.id)" aria-label="Example icon button with a filter list icon">
+                    <mat-icon style="font-size: 20px;height: 27px;" >delete</mat-icon>
+                  </button>
+                  <!-- &nbsp;
+                  <button mat-mini-fab color="primary" (click)="edit(element.id)"  aria-label="Example icon button with a filter list icon">
+                    <mat-icon style="font-size: 20px;">edit</mat-icon>
+                  </button> -->
+               </div>
+           
+          </td>
+        </ng-container>
+
+     
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+</div>

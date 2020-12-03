@@ -33,12 +33,14 @@
     </button>
       <span>My App</span>
       <span class="example-spacer"></span>
-      <span ><a href="">Login</a></span> /
-       <span><a href="">Register</a></span>
+      <span ><a [routerLink]="['/login']" routerLinkActive="router-link-active" >Login</a></span> /
+       <span><a [routerLink]="['/register']">Register</a></span>
       <button *ngIf="acountIcon" mat-mini-fab color="#fff"  >
         <mat-icon >account_circle</mat-icon>
       </button>
     </mat-toolbar>
+
+    
     <router-outlet></router-outlet>
 
     <!-- Add Content Here -->
