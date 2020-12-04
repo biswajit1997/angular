@@ -1,0 +1,30 @@
+<div class="profile">
+        <div class="text-white logout col-12 text-right mb-3">
+          
+                <mat-icon aria-hidden="false" (click)="logout()">logout</mat-icon>
+          
+        </div>
+    
+    <div class="card text-left">
+      <div class="card-header">
+        <div class="">
+          <h1>Profile</h1>
+        </div>
+        
+       
+      </div>
+     
+   
+      <div class="card-body">
+        <div>
+            Name : {{profileData['name'] ? profileData['name'] : '...'}} 
+        </div>
+        <div>
+            Email : {{profileData['email'] ? profileData['email'] : '...'}}
+        </div>
+        <div>
+            Mobile : {{profileData['mobile'] ? profileData['mobile'] : '...'}}
+        </div>
+      </div>
+    </div>
+  </div>
