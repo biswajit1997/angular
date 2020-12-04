@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../login.service';
-import { MatTableDataSource } from '@angular/material/table';
+import { HttpServiceService } from '../http-service.service';
+
+
 
 @Component({
   selector: 'app-home',
@@ -10,9 +11,12 @@ import { MatTableDataSource } from '@angular/material/table';
 export class HomeComponent implements OnInit {
 
 
-  constructor() {}
+  constructor(private httpService:HttpServiceService) {}
   ngOnInit() {
-    
+    return this.httpService.getTag()
+    .subscribe(data=>{
+      console.log(data)
+    })
   }
  
   

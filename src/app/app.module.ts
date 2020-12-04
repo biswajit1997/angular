@@ -30,6 +30,13 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { ProfileComponent } from './profile/profile.component';
+import { DialogExampleComponent } from './dialog-example/dialog-example.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { HttpClientModule } from '@angular/common/http';
+
+
+
 
 @NgModule({
   declarations: [
@@ -41,7 +48,11 @@ import { RegisterComponent } from './register/register.component';
     TodoComponent,
     LoginComponent,
     RegisterComponent,
+    ProfileComponent,
+    DialogExampleComponent,
+    
   ],
+  entryComponents:[DialogExampleComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -60,6 +71,8 @@ import { RegisterComponent } from './register/register.component';
     AngularFirestoreModule, // Only required for database features
     AngularFireAuthModule, // Only required for auth features,
     AngularFireStorageModule, // Only required for storage features
+    MatDialogModule,
+    HttpClientModule
   ],
   providers: [LoginService],
   bootstrap: [AppComponent],

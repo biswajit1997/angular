@@ -5,6 +5,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
   providedIn: 'root',
 })
 export class LoginService {
+  // loggedIn = false;
   constructor(public afs: AngularFirestore) {}
 
   create_NewRegister(data: any) {
@@ -20,7 +21,29 @@ export class LoginService {
     return this.afs.collection('Register').doc(id).get();
   }
   userLogin(login: any) {
-    return this.afs.collection('Register', (ref) => ref.where('email', '==', login.email).where('password', '==', login.password).limit(1))
+    return this.afs
+      .collection('Register', (ref) =>
+        ref
+          .where('email', '==', login.email)
+          .where('password', '==', login.password)
+          .limit(1)
+      )
+      .snapshotChanges();
+  }
+  // updateLogin(status: boolean) {
+  //   this.loggedIn = status;
+  // }
+
+  profileData(token:any){
+   
+
+    return this.afs
+    .collection('Register', (ref) =>
+      ref
+        .where('id', '==', token)
+       
+        .limit(1)
+    )
     .snapshotChanges();
   }
 }

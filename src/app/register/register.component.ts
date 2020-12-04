@@ -1,21 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../login.service';
 import { MatTableDataSource } from '@angular/material/table';
+import { nanoid } from 'nanoid';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
   dataItem: Array<any> = [];
 
-  
-
   displayedColumns: string[] = ['Name', 'Email', 'Mobile', 'Action'];
   dataSource = new MatTableDataSource(this.dataItem);
 
-  constructor(public loginservice: LoginService) { }
+  constructor(public loginservice: LoginService) {}
 
   ngOnInit() {
     this.loginservice.allData().subscribe((data) => {
@@ -31,7 +30,12 @@ export class RegisterComponent implements OnInit {
     });
   }
   Register(formObj: any) {
+    let nano = nanoid();
     let data = formObj;
+    data['id'] = nano;
+
+    console.log(data);
+   
     this.loginservice
       .create_NewRegister(data)
       .then((res) => {
@@ -43,7 +47,7 @@ export class RegisterComponent implements OnInit {
       });
   }
   delete(id: number) {
-    console.log(id);
+  
     this.loginservice
       .deleteData(id)
       .then((res) => {
