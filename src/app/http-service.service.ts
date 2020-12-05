@@ -7,7 +7,8 @@ import { AppModule } from './app.module';
   providedIn: 'root'
 })
 export class HttpServiceService {
-  apiurl = 'http://localhost:8000/api/addtag';
+  // apiurl = 'http://localhost:8000/api/addtag';
+  apiurl ='https://jsonplaceholder.typicode.com/posts';
 
   constructor(private _http:HttpClient) { }
 

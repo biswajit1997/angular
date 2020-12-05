@@ -35,9 +35,6 @@ import { DialogExampleComponent } from './dialog-example/dialog-example.componen
 import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,9 +47,8 @@ import { HttpClientModule } from '@angular/common/http';
     RegisterComponent,
     ProfileComponent,
     DialogExampleComponent,
-    
   ],
-  entryComponents:[DialogExampleComponent],
+  entryComponents: [DialogExampleComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -72,7 +68,7 @@ import { HttpClientModule } from '@angular/common/http';
     AngularFireAuthModule, // Only required for auth features,
     AngularFireStorageModule, // Only required for storage features
     MatDialogModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [LoginService],
   bootstrap: [AppComponent],
