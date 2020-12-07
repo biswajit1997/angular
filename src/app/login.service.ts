@@ -51,8 +51,8 @@ export class LoginService {
 
   //get username
   setUserName(username: string) {
+    console.log('service');
     this.usersDataName = username;
-    return console.log(username);
   }
   // getUserName() {
   //   return this.usersDataName;

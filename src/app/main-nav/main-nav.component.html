@@ -32,14 +32,14 @@
       <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
     </button>
       <span>My App</span>
-      <button (click)="any()">click</button>
+      <!-- <button (click)="any()">click</button> -->
       <span class="example-spacer"></span>
       <span *ngIf="!loginStatus">
         <span ><a [routerLink]="['/login']" routerLinkActive="router-link-active" >Login</a></span> /
         <span><a [routerLink]="['/register']">Register</a></span>
       </span>
       <span *ngIf="loginStatus">
-     
+      <span class="mr-2">{{userName}}</span>
       <button  mat-mini-fab color="#fff">
         <mat-icon  (click)="openDialog()" >account_circle</mat-icon>
       </button>

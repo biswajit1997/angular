@@ -13,7 +13,7 @@ import { LoginService } from '../login.service';
   styleUrls: ['./main-nav.component.css'],
 })
 export class MainNavComponent {
-  userData = '';
+  userName: any;
 
   loginStatus = false;
   constructor(
@@ -34,14 +34,15 @@ export class MainNavComponent {
     if (data === 'true') {
       console.log(data);
       this.loginStatus = true;
+      this.userName = localStorage.getItem('name');
     }
   }
 
   openDialog() {
     this.dialog.open(DialogExampleComponent);
   }
-  any() {
-    let aa = this.loginServise.usersDataName;
-    console.log(aa);
-  }
+  // any() {
+  //   let aa = this.loginServise.usersDataName;
+  //   console.log(aa);
+  // }
 }

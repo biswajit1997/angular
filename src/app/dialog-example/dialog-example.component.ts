@@ -9,7 +9,7 @@ import { LoginService } from '../login.service';
   styleUrls: ['./dialog-example.component.css'],
 })
 export class DialogExampleComponent implements OnInit {
-  userName = '';
+  userName = 'sdcsdcs';
 
   profileData: any;
 
@@ -21,15 +21,18 @@ export class DialogExampleComponent implements OnInit {
 
     this.loginservice.profileData(token).subscribe((res) => {
       this.profileData = res[0].payload.doc.data();
-      console.log(this.profileData);
-      this.userName = this.profileData;
+
+      this.userName = this.profileData.name;
+      console.log(this.userName);
     });
-    this.loginservice.setUserName(this.userName);
+    console.log(this.userName);
+    // this.loginservice.setUserName(this.userName);
   }
 
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('profile');
+    localStorage.removeItem('name');
     window.location.href = '/login';
 
     // this.login =true;
