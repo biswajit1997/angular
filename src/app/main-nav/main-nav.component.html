@@ -32,6 +32,7 @@
       <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
     </button>
       <span>My App</span>
+      <button (click)="any()">click</button>
       <span class="example-spacer"></span>
       <span *ngIf="!loginStatus">
         <span ><a [routerLink]="['/login']" routerLinkActive="router-link-active" >Login</a></span> /
@@ -39,14 +40,14 @@
       </span>
       <span *ngIf="loginStatus">
      
-      <button  mat-mini-fab color="#fff"  >
-        <mat-icon mat-raised-button (click)="openDialog()" >account_circle</mat-icon>
+      <button  mat-mini-fab color="#fff">
+        <mat-icon  (click)="openDialog()" >account_circle</mat-icon>
       </button>
       </span>
     </mat-toolbar>
 
-    
-    <router-outlet></router-outlet>
+  
+    <router-outlet ></router-outlet>
 
     <!-- Add Content Here -->
   </mat-sidenav-content>

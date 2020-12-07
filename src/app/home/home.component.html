@@ -1,16 +1,19 @@
-<!-- <div *ngFor="let item of dataItem" class="p-4">
-   <p>{{item.body}}</p> 
-</div> -->
 
-<div class="container mt-3">
-    <div class="row">
-        <label for="">Name</label>
-        <input type="hidden" name="id" [(ngModel)]="id" >
-        <input type="text" class="form-control" [(ngModel)]="name" required>
-        <label for="">Email</label>
-        <input type="email" class="form-control" [(ngModel)]="email"  required>
-        <label for="">Mobile</label>
-        <input type="text" class="form-control" [(ngModel)]="mobile" required>
+<div class="col-6 offset-3 mt-3">
+    <div class="">
+        <div>
+            <label for="">Name</label>
+            <input type="hidden" name="id" [(ngModel)]="id" >
+            <input type="text" class="form-control" [(ngModel)]="name" required>
+        </div>
+        <div>
+            <label for="">Email</label>
+            <input type="email" class="form-control" [(ngModel)]="email"  required>
+        </div>
+        <div>
+            <label for="">Mobile</label>
+            <input type="text" class="form-control" [(ngModel)]="mobile" required>
+        </div>
         <div class="mt-3" >
             <button type="submit"  class="btn btn-primary" *ngIf="sub" (click)="submit(name,email,mobile)">Submit</button>
             <button type="submit" class="btn btn-primary"  *ngIf="up" (click)="update(name,email,mobile,id)">Update</button>

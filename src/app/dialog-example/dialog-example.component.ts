@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+
 import { LoginService } from '../login.service';
 
 @Component({
@@ -8,6 +9,8 @@ import { LoginService } from '../login.service';
   styleUrls: ['./dialog-example.component.css'],
 })
 export class DialogExampleComponent implements OnInit {
+  userName = '';
+
   profileData: any;
 
   constructor(public loginservice: LoginService) {}
@@ -19,7 +22,9 @@ export class DialogExampleComponent implements OnInit {
     this.loginservice.profileData(token).subscribe((res) => {
       this.profileData = res[0].payload.doc.data();
       console.log(this.profileData);
+      this.userName = this.profileData;
     });
+    this.loginservice.setUserName(this.userName);
   }
 
   logout() {

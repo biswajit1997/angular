@@ -5,6 +5,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
   providedIn: 'root',
 })
 export class LoginService {
+  usersDataName: string = '';
   // loggedIn = false;
   constructor(public afs: AngularFirestore) {}
 
@@ -34,16 +35,26 @@ export class LoginService {
   //   this.loggedIn = status;
   // }
 
-  profileData(token:any){
-   
-
+  profileData(token: any) {
     return this.afs
-    .collection('Register', (ref) =>
-      ref
-        .where('id', '==', token)
-       
-        .limit(1)
-    )
-    .snapshotChanges();
+      .collection('Register', (ref) =>
+        ref
+          .where('id', '==', token)
+
+          .limit(1)
+      )
+      .snapshotChanges();
   }
+  loginUser() {
+    return !!localStorage.getItem('token');
+  }
+
+  //get username
+  setUserName(username: string) {
+    this.usersDataName = username;
+    return console.log(username);
+  }
+  // getUserName() {
+  //   return this.usersDataName;
+  // }
 }

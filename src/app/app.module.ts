@@ -21,7 +21,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { TodoComponent } from './todo/todo.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginService } from './login.service';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
@@ -34,6 +34,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { DialogExampleComponent } from './dialog-example/dialog-example.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -69,8 +70,9 @@ import { HttpClientModule } from '@angular/common/http';
     AngularFireStorageModule, // Only required for storage features
     MatDialogModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
-  providers: [LoginService],
+  providers: [LoginService, AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

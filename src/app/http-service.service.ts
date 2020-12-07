@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { AppModule } from './app.module';
 
 @Injectable({
@@ -16,19 +17,19 @@ export class HttpServiceService {
 
   constructor(private _http: HttpClient) {}
 
-  getdata() {
-    return this._http.get<AppModule[]>(this.geturl);
+  getdata(): Observable<any> {
+    return this._http.get(this.geturl);
   }
-  postData(allDataPost: any) {
-    return this._http.post<AppModule[]>(this.postUrl, allDataPost);
+  postData(allDataPost: any): Observable<any> {
+    return this._http.post(this.postUrl, allDataPost);
   }
-  deleteData(id: any) {
-    return this._http.post<AppModule[]>(this.deleteUrl, id);
+  deleteData(id: any): Observable<any> {
+    return this._http.post(this.deleteUrl, id);
   }
-  editData(id: any) {
-    return this._http.post<AppModule[]>(this.editUrl, id);
+  editData(id: any): Observable<any> {
+    return this._http.post(this.editUrl, id);
   }
-  updateData(upData: any) {
-    return this._http.post<AppModule[]>(this.updateUrl, upData);
+  updateData(upData: any): Observable<any> {
+    return this._http.post(this.updateUrl, upData);
   }
 }

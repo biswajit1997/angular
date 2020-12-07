@@ -5,7 +5,27 @@
         font-size: 3em;
     }
 </style>
-<div class="main">
+
+<div class="main mb-3">
     <p>about-us works!</p>
 
 </div>
+
+<div class="col-sm-6 offset-sm-3">
+    <label for="">Email</label>
+    <input type="text" class="form-control" [formControl]="email" required>
+
+    <p>Display Value: {{email.value}}</p>
+
+    <div>
+        <button class="btn btn-secondary" (click)="updateEmail()">Update Email</button>
+    </div>
+</div>
+
+<p>
+    Today's item: {{item}}
+  </p>
+  <label>Add an item: <input #newItem></label>
+<button (click)="addNewItem(newItem.value)">Add to parent's list</button>
+
+

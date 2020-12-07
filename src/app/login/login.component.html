@@ -6,15 +6,15 @@
         
         <mat-form-field class="example-full-width">
           <mat-label>Email</mat-label>
-          <input matInput placeholder="inf@gmail.com" name="email" ngModel>
+          <input type="email" matInput placeholder="inf@gmail.com" name="email" ngModel required email>
         </mat-form-field>
       
       
         <mat-form-field class="example-full-width">
           <mat-label>Password</mat-label>
-          <input matInput placeholder="Enter Password" type="password" name="password" ngModel>
+          <input matInput placeholder="Enter Password" type="password" name="password"  required minlength="4" ngModel>
         </mat-form-field>
-        <button mat-flat-button color="primary" type="submit" (click)="LogIn(login.value)">sign in</button>
+        <button mat-flat-button color="primary" type="submit" (click)="LogIn(login.value)" [disabled]="!login.valid">sign in</button>
       </form>
     </div>
   

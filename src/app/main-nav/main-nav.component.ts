@@ -5,6 +5,7 @@ import { map, shareReplay } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogExampleComponent } from '../dialog-example/dialog-example.component';
 import { ProfileComponent } from '../profile/profile.component';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-main-nav',
@@ -12,7 +13,14 @@ import { ProfileComponent } from '../profile/profile.component';
   styleUrls: ['./main-nav.component.css'],
 })
 export class MainNavComponent {
+  userData = '';
+
   loginStatus = false;
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    public dialog: MatDialog,
+    private loginServise: LoginService
+  ) {}
 
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
@@ -29,12 +37,11 @@ export class MainNavComponent {
     }
   }
 
-  constructor(
-    private breakpointObserver: BreakpointObserver,
-    public dialog: MatDialog
-  ) {}
-
   openDialog() {
     this.dialog.open(DialogExampleComponent);
+  }
+  any() {
+    let aa = this.loginServise.usersDataName;
+    console.log(aa);
   }
 }
