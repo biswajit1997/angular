@@ -5,7 +5,6 @@ import { AngularFirestore } from '@angular/fire/firestore';
   providedIn: 'root',
 })
 export class LoginService {
-  usersDataName: string = '';
   // loggedIn = false;
   constructor(public afs: AngularFirestore) {}
 
@@ -48,13 +47,4 @@ export class LoginService {
   loginUser() {
     return !!localStorage.getItem('token');
   }
-
-  //get username
-  setUserName(username: string) {
-    console.log('service');
-    this.usersDataName = username;
-  }
-  // getUserName() {
-  //   return this.usersDataName;
-  // }
 }

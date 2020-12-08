@@ -39,7 +39,7 @@
         <span><a [routerLink]="['/register']">Register</a></span>
       </span>
       <span *ngIf="loginStatus">
-      <span class="mr-2">{{userName}}</span>
+      <span class="mr-2">{{profileData['name'] ? profileData['name'] : '...'}}</span>
       <button  mat-mini-fab color="#fff">
         <mat-icon  (click)="openDialog()" >account_circle</mat-icon>
       </button>

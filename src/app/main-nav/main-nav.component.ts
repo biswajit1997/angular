@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogExampleComponent } from '../dialog-example/dialog-example.component';
-import { ProfileComponent } from '../profile/profile.component';
+
 import { LoginService } from '../login.service';
 
 @Component({
@@ -14,7 +14,7 @@ import { LoginService } from '../login.service';
 })
 export class MainNavComponent {
   userName: any;
-
+  profileData: any;
   loginStatus = false;
   constructor(
     private breakpointObserver: BreakpointObserver,
@@ -30,19 +30,19 @@ export class MainNavComponent {
     );
 
   ngOnInit(): void {
-    let data = localStorage.getItem('profile');
-    if (data === 'true') {
+    let data = localStorage.getItem('token');
+    if (data) {
       console.log(data);
       this.loginStatus = true;
-      this.userName = localStorage.getItem('name');
+      // this.userName = localStorage.getItem('name');
+      // let token = (this.userName = localStorage.getItem('token'));
+      this.loginServise.profileData(data).subscribe((result) => {
+        this.profileData = result[0].payload.doc.data();
+      });
     }
   }
 
   openDialog() {
     this.dialog.open(DialogExampleComponent);
   }
-  // any() {
-  //   let aa = this.loginServise.usersDataName;
-  //   console.log(aa);
-  // }
 }
