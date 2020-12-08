@@ -9,7 +9,7 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class ProfileComponent implements OnInit {
   profileData: any;
-
+  public date = new Date();
   constructor(public loginservice: LoginService) {}
 
   ngOnInit() {

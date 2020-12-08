@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
@@ -12,7 +12,8 @@ import { LoginService } from '../login.service';
   templateUrl: './main-nav.component.html',
   styleUrls: ['./main-nav.component.css'],
 })
-export class MainNavComponent {
+export class MainNavComponent implements OnInit {
+  // leftSideBar = false;
   userName: any;
   profileData: any;
   loginStatus = false;
@@ -32,10 +33,8 @@ export class MainNavComponent {
   ngOnInit(): void {
     let data = localStorage.getItem('token');
     if (data) {
-      console.log(data);
       this.loginStatus = true;
-      // this.userName = localStorage.getItem('name');
-      // let token = (this.userName = localStorage.getItem('token'));
+      // this.leftSideBar = true;
       this.loginServise.profileData(data).subscribe((result) => {
         this.profileData = result[0].payload.doc.data();
       });

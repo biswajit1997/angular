@@ -1,8 +1,9 @@
-<div  class="main">
+<div  class="col-sm-6 offset-sm-3 mt-4">
     <div>
       <h3>Login</h3>
     </div>
-    <form #login="ngForm" class="example-form">
+    <div>
+      <form #login="ngForm" class="example-form">
         
         <mat-form-field class="example-full-width">
           <mat-label>Email</mat-label>
@@ -15,8 +16,10 @@
           <input matInput placeholder="Enter Password" type="password" name="password"  required minlength="4" ngModel>
         </mat-form-field>
         <button mat-flat-button color="primary" type="submit" (click)="LogIn(login.value)" [disabled]="!login.valid">sign in</button>
-      </form>
+    </form>
     </div>
+
+</div>
   
     
 <!-- 
